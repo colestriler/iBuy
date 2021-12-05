@@ -70,6 +70,7 @@ class Api::ProductsController < ApplicationController
   def attach_viewed_products_cookie(new_product)
     id = new_product.id
     unless session[:viewed_products].include?(id)
+      # adds id to the front of the 5 most recently viewed products
       session[:viewed_products] = session[:viewed_products][0..4].unshift(id)
     end
   end
